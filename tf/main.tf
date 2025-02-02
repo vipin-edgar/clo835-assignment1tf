@@ -25,7 +25,7 @@ resource "aws_security_group" "web_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Change this to your IP: x.x.x.x/32 for security
+    cidr_blocks = ["0.0.0.0/0"]  
   }
 
   ingress {
@@ -48,7 +48,7 @@ resource "aws_security_group" "web_sg" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = ["172.17.0.0/16"]  # Restrict to Docker Network
+    cidr_blocks = ["172.17.0.0/16"]  
   }
 
   egress {
@@ -65,7 +65,7 @@ resource "aws_instance" "web_app" {
   instance_type          = "t2.micro"
   key_name               = "vockey"  # Replace with your actual key pair
   security_groups        = [aws_security_group.web_sg.name]
-  iam_instance_profile   = "LabInstanceProfile"  # Attach existing IAM role
+  iam_instance_profile   = "LabInstanceProfile"  
 
   user_data = <<-EOF
               #!/bin/bash
