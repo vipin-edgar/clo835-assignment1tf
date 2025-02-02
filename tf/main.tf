@@ -7,6 +7,15 @@ data "aws_ssm_parameter" "al2_ami" {
   name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
 }
 
+# Create ECR Repositories
+resource "aws_ecr_repository" "my_db" {
+  name = "vipinecr/my_db"
+}
+
+resource "aws_ecr_repository" "my_app" {
+  name = "vipinecr/my_app"
+}
+
 # Security Group for EC2
 resource "aws_security_group" "web_sg" {
   name        = "web-app-sg"
