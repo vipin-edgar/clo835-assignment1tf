@@ -63,7 +63,7 @@ resource "aws_security_group" "web_sg" {
 resource "aws_instance" "web_app" {
   ami                    = data.aws_ssm_parameter.al2_ami.value
   instance_type          = "t2.micro"
-  key_name               = "vockey"  # Replace with your actual key pair
+  key_name               = "vockey"
   security_groups        = [aws_security_group.web_sg.name]
   iam_instance_profile   = "LabInstanceProfile"  
 
